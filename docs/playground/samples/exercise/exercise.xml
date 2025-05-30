@@ -1,0 +1,5 @@
+<templates xml:space="preserve">
+    <t t-name="training_oca.Parent">
+        <div>To Fill</div>
+    </t>
+</templates>

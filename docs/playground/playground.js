@@ -105,6 +105,11 @@ const SAMPLES = [
     code: ["js", "xml", "css"],
   },
   {
+    description: "Exercise",
+    folder: "exercise",
+    code: ["js", "xml", "css"],
+  },
+  {
     description: "Components",
     folder: "components",
     code: ["js", "xml", "css"],
