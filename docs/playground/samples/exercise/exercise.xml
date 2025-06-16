@@ -1,5 +1,29 @@
 <templates xml:space="preserve">
-    <t t-name="training_oca.Parent">
-        <div>To Fill</div>
+    <t t-name="oca_training.Parent">
+      <h1>Exercise: Dashboard of Counters</h1>
+      <button t-on-click="addChild">Add children</button>
+      <span> (<t t-esc="state.children.length"/> existing)</span>
+      <div class="row">
+        <t t-foreach="state.children" t-as="child" t-key="child_index">
+          <t t-if="child">
+            <Child id="child_index"/>
+          </t>
+          <t t-else="">
+            <div class="col no-child"><button t-on-click="() => this.initChild(child_index)">add</button></div>
+          </t>
+        </t>
+      </div>
+    </t>
+    <t t-name="oca_training.Child">
+      <div class="col child">
+        <!-- buttons -->
+        <button t-if="editMode.value" t-on-click="save">Save</button>
+        <button t-else="" t-on-click="edit">Edit</button>
+        <button>X</button>
+        <!-- text -->
+        <input t-if="editMode.value" type="text" t-model="title.value"/>
+        <p t-else=""><t t-esc="title.value"/></p>
+        <!-- counter -->
+      </div>
     </t>
 </templates>
