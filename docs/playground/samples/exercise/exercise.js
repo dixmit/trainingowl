@@ -3,7 +3,7 @@ import { Component, useEnv, useSubEnv, useState, mount } from "@odoo/owl";
 
 export class Child extends Component {
     static template = 'oca_training.Child';
-    static props = {id: Number};
+    static props = {id: Number, unset: Function};
     
    setup() {
        this.editMode = useState({value: true})
@@ -15,6 +15,9 @@ export class Child extends Component {
    }
    save() {
        this.editMode.value = false
+   }
+   del() {
+       this.props.unset()
    }
 }
 
@@ -32,6 +35,9 @@ export class Parent extends Component {
    initChild(id) {
        this.state.children[id] = id
    } 
+   unsetChild(id) {
+       this.state.children[id] = undefined
+   }
    
 }
 
