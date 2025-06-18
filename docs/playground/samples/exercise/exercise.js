@@ -47,7 +47,7 @@ export class Child extends Component {
     this.props.unset();
   }
   increment() {
-    this.counter += 1;
+    this.counter.value += 1;
   }
 }
 
