@@ -110,6 +110,11 @@ const SAMPLES = [
     code: ["js", "xml", "css"],
   },
   {
+    description: "Exercise Solution",
+    folder: "exercise_solved",
+    code: ["js", "xml", "css"],
+  },
+  {
     description: "Components",
     folder: "components",
     code: ["js", "xml", "css"],
