@@ -1,0 +1,30 @@
+<templates xml:space="preserve">
+   <t t-name="oca_training.Counter">
+    <div class="col-2 o_counter" >
+      <div class=" o_counter_header">
+        <button t-on-click="toggleEdit" t-if="!state.edit">Edit</button>
+        <button t-on-click="toggleEdit" t-if="state.edit">Save</button>
+        <button t-on-click="removeCounter">X</button>
+      </div>
+      <div class="o_counter_body">
+        <div t-if="!state.edit"><div class="o_counter_name" t-esc="props.name" /><div t-esc="props.value"/></div>
+        <div t-if="state.edit">
+          <input type="text" t-model="state.name" placeholder="Counter Name"/>
+          <input type="number" t-model="state.value" placeholder="Counter Value"/>
+        </div>
+      </div>
+      <div class="o_counter_footer">
+        <button t-on-click="incrementCounter">+1</button>
+      </div>
+    </div>
+   </t>
+   <t t-name="oca_training.CounterDashboard">
+     <button t-on-click="addCounter">Add Counter</button>
+     <button t-on-click="resetAll">Reset All</button>
+     <div class="row">
+       <t t-foreach="this.counters" t-as="counter_id" t-key="counter_id">
+         <Counter t-props="this.counters[counter_id]" />
+       </t>
+     </div>
+   </t>
+</templates>
