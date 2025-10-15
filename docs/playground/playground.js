@@ -115,6 +115,11 @@ const SAMPLES = [
     code: ["js", "xml", "css"],
   },
   {
+    description: "Exercise Solution 02",
+    folder: "exercise_solved_02",
+    code: ["js", "xml", "css"],
+  },
+  {
     description: "Exercise Solution with slots",
     folder: "exercise_solved_slots",
     code: ["js", "xml", "css"],

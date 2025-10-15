@@ -1,0 +1,29 @@
+<templates xml:space="preserve">
+   <t t-name="oca_training.Dashboard">
+       <button t-on-click="addCounter">Add Counter</button>
+       <button t-on-click="resetAll">Reset all</button>
+       <button t-on-click="removeAll">Remove all</button>
+       <div class="row">
+         <t t-foreach="state.counter_children" t-as="c_child" t-key="c_child.id">
+           <div class="col-3">
+              <Counter/>
+           </div>
+         </t>
+       </div>
+   </t>
+   
+   <t t-name="oca_training.Counter">
+       <div class="row" style="border: 1px solid red; margin: 5px; padding:5px;">
+         <b class="col-12" t-if="!state.editing_name" t-esc="state.name" t-on-dblclick="toggle_edit_name"/>
+         <input t-else="" class="col-12" type="text" t-on-focusout="toggle_edit_name" t-model="state.name" />
+         
+         <span><b>Count:</b></span>
+         <div t-if="!state.editing_count" t-esc="state.count" t-on-dblclick="toggle_edit_count"/>
+         <input t-else=""  type="number" t-on-focusout="toggle_edit_count" t-model="state.count"  />
+         
+         <button class="col-4" t-on-click="increment">+1</button>
+         <button class="col-4" t-on-click="reset">Reset</button>
+       </div>
+       
+   </t>
+</templates>
