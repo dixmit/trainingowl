@@ -1,3 +1,17 @@
+.child, .no-child {
+  min-width: min(100%, 10em);
+  min-height: 5em;
+  padding: 1em;
+}
+
+.child {
+  border: solid 1px black;
+}
+
+.no-child {
+  border: dashed 1px gray;
+}
+
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
