@@ -13,17 +13,18 @@
    </t>
    
    <t t-name="oca_training.Counter">
-       <div class="row" style="border: 1px solid red; margin: 5px; padding:5px;">
-         <b class="col-12" t-if="!state.editing_name" t-esc="state.name" t-on-dblclick="toggle_edit_name"/>
-         <input t-else="" class="col-12" type="text" t-on-focusout="toggle_edit_name" t-model="state.name" />
-         
-         <span><b>Count:</b></span>
-         <div t-if="!state.editing_count" t-esc="state.count" t-on-dblclick="toggle_edit_count"/>
-         <input t-else=""  type="number" t-on-focusout="toggle_edit_count" t-model="state.count"  />
-         
-         <button class="col-4" t-on-click="increment">+1</button>
-         <button class="col-4" t-on-click="reset">Reset</button>
+       <div style="border: 1px solid red; margin: 5px; padding:5px;">
+          <div t-ref="nameRef">
+            <b class="col-12" t-if="!state.editing_name" t-esc="state.name" t-on-dblclick="toggle_edit_name"/>
+            <input t-else="" class="col-12" type="text" t-model="state.name" />
+          </div>
+          <span><b>Count:</b></span>
+          <div t-ref="countRef">
+            <div t-if="!state.editing_count" t-esc="state.count" t-on-dblclick="toggle_edit_count"/>
+            <input t-else=""  type="number" t-model="state.count"  />
+          </div>
+          <button class="col-4" t-on-click="increment">+1</button>
+          <button class="col-4" t-on-click="reset">Reset</button>
        </div>
-       
    </t>
 </templates>
