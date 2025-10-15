@@ -1,0 +1,32 @@
+<templates xml:space="preserve">
+   <t t-name="oca_training.Counter">
+    <div class="col-2 o_counter" >
+      <div class=" o_counter_header">
+        <button t-on-click="()=> this.props.removeCounter(this.props.counterId)">X</button>
+      </div>
+      <div class="o_counter_body">
+        <t t-slot="default"/>
+      </div>
+      <div class="o_counter_footer">
+        <button t-on-click="() => this.props.increaseCounter(this.props.counterId)">+1</button>
+        <button t-on-click="() => this.props.resetCounter(this.props.counterId)">Reset</button>
+      </div>
+    </div>
+   </t>
+   <t t-name="oca_training.CounterDashboard">
+     <button t-on-click="addCounter">Add Counter</button>
+     <button t-on-click="resetAll">Reset All</button>
+     <div class="row">
+       <t t-foreach="this.counters" t-as="counter_id" t-key="counter_id">
+         <Counter counterId="counter_id" removeCounter.bind="removeCounter" increaseCounter.bind="incrementCounter" resetCounter.bind="resetCounter" >
+            <t t-set-slot="default">
+              <div class="o_counter_name">
+                <input type="text" t-model="this.counters[counter_id].name" placeholder="Counter Name"/>
+              </div>
+              <div  t-esc="this.counters[counter_id].value" />
+            </t>
+         </Counter>
+       </t>
+     </div>
+   </t>
+</templates>
