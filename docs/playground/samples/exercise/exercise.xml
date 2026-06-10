@@ -1,5 +1,41 @@
 <templates xml:space="preserve">
-    <t t-name="training_oca.Parent">
-        <div>To Fill</div>
-    </t>
+
+  <t t-name="training_oca.Parent">
+    <div class="controls">
+      <input t-model="state.newName" placeholder="New counter name"/>
+      <button t-on-click="addCounter">Add</button>
+      <button t-if="state.counters.length" t-on-click="resetAll">Reset All</button>
+      <button t-if="state.counters.length" t-on-click="removeAll">Remove All</button>
+    </div>
+    <div class="dashboard">
+      <t t-foreach="state.counters" t-as="c" t-key="c.id">
+        <Counter
+          counter="c"
+          onRename="rename"
+          onIncrement="increment"
+          onReset="reset"
+          onRemove="remove"/>
+      </t>
+    </div>
+  </t>
+
+
+  <t t-name="training_oca.Counter">
+    <div class="counter">
+      <input
+        type="text"
+        t-att-value="props.counter.name"
+        t-on-input="rename"/>
+      <div>
+        <span><t t-esc="props.counter.value"/></span>
+        <button t-on-click="increment">Increment</button>
+      </div>
+      <div class="actions">
+        <button t-on-click="reset">Reset</button>
+        <button t-on-click="remove">Delete</button>
+      </div>
+    </div>
+  </t>
+
+
 </templates>
